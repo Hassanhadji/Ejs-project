@@ -1,0 +1,52 @@
+<%- include("partials/header.ejs") %>
+
+<form action="/submit" method ="POST">
+
+
+<div class="mb-3">
+  <label for="Post" class="form-label">Write your Post here: </label>
+  <textarea
+  class="form-control"
+  id="new-post"
+  name="essay"
+  rows="4"
+></textarea>
+
+</div>
+
+<div class="d-grid gap-2">
+ <button class ="btn btn-success" type ="submit" >Create Post! </button>
+ 
+</div>
+</form>
+
+  <ul class="list-group">
+  <% posts.forEach(post => { %>
+    <li class="list-group-item position-relative">
+      
+      <!-- post content -->
+      <textarea class="form-control" rows="3" readonly><%= post.essay %></textarea>
+
+      <!-- buttons in the bottom-right -->
+      <div class="d-flex justify-content-end gap-2 mt-2">
+        
+        <!-- update button-->
+        <form action="/update" method="GET" class="m-0">
+          <input type="hidden" name="id" value="<%= post.id %>">
+          <button type="submit" class="btn btn-primary btn-sm">Update</button>
+        </form>
+
+        <!-- delete with id -->
+        <form action="/delete" method="POST" class="m-0">
+          <input type="hidden" name="id" value="<%= post.id %>">
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+
+      </div>
+    </li>
+  <% }) %>
+</ul>
+
+
+<%- include("partials/footer.ejs") %>
+ 
