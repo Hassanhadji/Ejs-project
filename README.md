@@ -1,0 +1,1 @@
+The goal of this project was to create a Blog web application using Node.js, Express.js, and EJS. The application allows users to create and view blog posts. Posts will not persist between sessions as no database is being used in this version of the application. The styling displays a good and easy user experience
